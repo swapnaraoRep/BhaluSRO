@@ -1,0 +1,43 @@
+<style>
+
+
+.pagination td{
+  color: black;
+  float: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+.pagination th{
+ color: black;
+  float: center;
+  padding: 4px 10px;
+  text-decoration: none;
+  background-color: #169491;
+  transition: background-color .3s;
+}
+
+.pagination td.active {
+  background-color: #4CAF50;
+  color: grey;
+}
+
+
+	
+.pagination tr{
+  color: black;
+  float: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  background-color: #ddd;
+  transition: background-color .3s;
+}
+.pagination tr:hover:not(.active) {
+	background-color: #ddd;
+	cursor:pointer;
+	background-color: #41e2de;
+	}
+.center {
+  text-align: center;
+}
+</style>

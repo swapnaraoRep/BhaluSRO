@@ -1,0 +1,4 @@
+if u r not placing transactional in service ....u will get error becoz session should not open
+//Could not obtain transaction-synchronized Session for current thread
+
+hibernate detached error : dont privide values for primary key if u r giving auotgenerate to model class

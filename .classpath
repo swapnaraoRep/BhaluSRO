@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="com/HRMS/Dao/" kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/SPPSSystems/Downloads/servlet-api.jar/javax.servlet.jsp.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BhaluV1"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/catalina.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar" sourcepath="C:/Users/SPPSSystems/.m2/repository/org/apache/tomcat/tomcat-servlet-api/7.0.92/tomcat-servlet-api-7.0.92-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/tomcat7-websocket.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
