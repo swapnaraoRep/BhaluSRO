@@ -3,12 +3,14 @@ package com.HRMS.Model;
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -25,12 +27,13 @@ public class Employee_Leaves implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int Id;
 	private int empId;
-	private int leaveId;
 	private Date start_date;
 	private Date end_date;
 	private int total_days;
 	
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.MERGE)
+	@JoinColumn(name="leaveId" )
 	private Leaves leaves;
 
 	
@@ -50,13 +53,6 @@ public class Employee_Leaves implements Serializable {
 		this.empId = empId;
 	}
 
-	public int getLeaveId() {
-		return leaveId;
-	}
-
-	public void setLeaveId(int leaveId) {
-		this.leaveId = leaveId;
-	}
 
 	public Date getStart_date() {
 		return start_date;
@@ -84,7 +80,7 @@ public class Employee_Leaves implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Employee_Leaves [Id=" + Id + ", empId=" + empId + ", leaveId=" + leaveId + ", start_date=" + start_date
+		return "Employee_Leaves [Id=" + Id + ", empId=" + empId + ", start_date=" + start_date
 				+ ", end_date=" + end_date + ", total_days=" + total_days + "]";
 	}
 
@@ -95,7 +91,6 @@ public class Employee_Leaves implements Serializable {
 		result = prime * result + Id;
 		result = prime * result + empId;
 		result = prime * result + ((end_date == null) ? 0 : end_date.hashCode());
-		result = prime * result + leaveId;
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + total_days;
 		return result;
@@ -118,8 +113,6 @@ public class Employee_Leaves implements Serializable {
 			if (other.end_date != null)
 				return false;
 		} else if (!end_date.equals(other.end_date))
-			return false;
-		if (leaveId != other.leaveId)
 			return false;
 		if (start_date == null) {
 			if (other.start_date != null)

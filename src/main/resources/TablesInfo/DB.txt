@@ -1,0 +1,21 @@
+CREATE TABLE `hrms`.`hrms_employee_leaves` (
+  `Id` INT NOT NULL AUTO_INCREMENT,
+  `empId` INT NULL,
+  `leaveId` INT NULL,
+  `start_date` DATE NULL,
+  `end_date` DATE NULL,
+  `total_days` INT NULL,
+  `hrms_employee_leavescol` VARCHAR(45) NULL,
+  PRIMARY KEY (`Id`),
+  INDEX `leaves_leaveId_idx` (`leaveId` ASC),
+  INDEX `leaves_empId_idx` (`empId` ASC),
+  CONSTRAINT `leaves_empId`
+    FOREIGN KEY (`empId`)
+    REFERENCES `hrms`.`hrms_employee_details` (`ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `leaves_leaveId`
+    FOREIGN KEY (`leaveId`)
+    REFERENCES `hrms`.`leaves` (`leaveId`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);

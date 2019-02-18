@@ -1,5 +1,6 @@
 package com.HRMS.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -76,15 +77,25 @@ session.persist(employeeLeave);
 
 	public List<Employee_Leaves> leaveHistory(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		//List<Employee_Leaves> leaveHistory = session.createQuery("from Employee_Leaves").list();
-		//List<Employee_Leaves> leaveHistory = (List<Employee_Leaves>) session.load(Employee_Leaves.class, new Integer(id));
-		//List<Employee_Leaves> leaveHistory = session.createQuery("from Employee_Leaves where empId="+id).list();
-		//List<Employee_Leaves> leaveHistory= session.createQuery("from Employee_Leaves l join fetch l.leaves where l.leaveId =l.leaves.leaveId and l.empId="+id).list();
-
-List<Employee_Leaves> leaveHistory=session.createSQLQuery("select * from hrms_employee_leaves as l,leaves  as v where l.leaveId=v.leaveId and empId="+id).list();
-		for(Employee_Leaves history :leaveHistory)
+		List<Employee_Leaves> leaveHistory=new ArrayList<Employee_Leaves>();
+		
+//List<Object[]> rows=session.createSQLQuery("select l.start_date,l.end_date,v.leaveId,v.leaveName from hrms_employee_leaves as l, leaves v where l.leaveId=v.leaveId and empId="+id).list();
+		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).addEntity("l",Employee_Leaves.class).addJoin("v","l.leaves").list();
+		
+		for (Object[] row : rows) {
+		    for(Object obj : row) {
+		    	System.out.print(obj + "::");
+		    }
+		    System.out.println("\n");
+		}
+		for(Object[] row  :rows)
 {
-	System.out.println("history"+history.getEmpId()+"*****"+history.getTotal_days());
+			Employee_Leaves e=  (Employee_Leaves)row[0] ;
+			Leaves leaves=(Leaves)row[1] ;
+			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+e.toString()+"&&&&&&&"+leaves.toString());
+			e.setLeaves(leaves);
+			leaveHistory.add(e);
+			
 }
 		
 		return leaveHistory;

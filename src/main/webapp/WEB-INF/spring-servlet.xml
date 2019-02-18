@@ -69,16 +69,8 @@
       <beans:property name = "basename" value = "views" />
       <beans:property name = "order" value = "1" />
    </beans:bean>
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
-	<!-- <beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
-	</beans:bean> -->
-
-	 <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	
+ <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
@@ -97,6 +89,7 @@
 				<beans:value>com.HRMS.Model.DepartmentVO</beans:value>
 				<beans:value>com.HRMS.Model.EmployeeVO_Login</beans:value>
 				<beans:value>com.HRMS.Model.Leaves</beans:value>
+				<beans:value>com.HRMS.Model.Employee_Leaves</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

@@ -23,3 +23,7 @@ http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-
 
 /************************/
 https://stackoverflow.com/questions/39404757/hibernate-fetch-data-from-two-tables-with-one-to-one-mapping
+
+
+/get two tablesdata from hibernate
+url:https://www.journaldev.com/3422/hibernate-native-sql-query-example

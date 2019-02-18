@@ -115,9 +115,9 @@ public class EmployeeController {
 	 	@RequestMapping("/sendLeaveRequest")
 		public String sendLeaveRequest(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model) {
 	 	ModelAndView modelandView=new ModelAndView();
-	 	
+	 	System.out.println("employeeLeave"+employeeLeave.getLeaves().getLeaveId());
 	 	employeeService.sendLeaveRequest(employeeLeave);
-	 	model.addAttribute("Success","successFullyAdded"+employeeLeave.getLeaveId());
+	 	model.addAttribute("Success","successFullyAdded"+employeeLeave.getEmpId());
 			return "leaveRequest";
 		}
 	 	@RequestMapping("/leaveHistoryRequest")
