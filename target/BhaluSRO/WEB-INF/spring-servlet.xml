@@ -31,7 +31,7 @@
 <beans:property name="viewClass">  
     <beans:value>org.springframework.web.servlet.view.tiles3.TilesView</beans:value>  
 </beans:property>
-
+<beans:property name="order" value="0" />
  </beans:bean>
 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 <beans:property name="definitions">
@@ -40,6 +40,7 @@
  <beans:value>/WEB-INF/tiles/views.xml</beans:value> 
 </beans:list>
 </beans:property>
+
 </beans:bean>
 
 <!-- Bean View Resolver -->
@@ -52,17 +53,17 @@
 </beans:bean> -->
 
 <!-- ResourceBundleViewResolver -->
-<!-- <beans:bean class = "org.springframework.web.servlet.view.ResourceBundleViewResolver">
+<beans:bean class = "org.springframework.web.servlet.view.ResourceBundleViewResolver">
       <beans:property name = "basename" value = "views" />
-      <beans:property name = "order" value = "0" />
-   </beans:bean> -->
+      <beans:property name = "order" value = "1" />
+   </beans:bean>
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<!-- <beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="1" />
+		<beans:property name="order" value="2" />
 	</beans:bean> -->
 
 	 <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -82,6 +83,8 @@
 			<beans:list>
 				<beans:value>com.HRMS.Model.EmployeeVO</beans:value>
 				<beans:value>com.HRMS.Model.DepartmentVO</beans:value>
+				<beans:value>com.HRMS.Model.EmployeeVO_Login</beans:value>
+				<beans:value>com.HRMS.Model.Leaves</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -89,6 +92,9 @@
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
 				</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				 <beans:prop key="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</beans:prop>
+			
+			 <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>

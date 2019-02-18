@@ -3,20 +3,76 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-<definition name="viewAndUpdateEmployee" extends="DefaultTemplate">
-  <put-attribute name="title" value="Welcome" />  
-    <put-attribute name="body" value="/WEB-INF/views/Employee/viewAndUpdateEmployee.jsp"/>
-</definition>
-<definition name="AdminLogin" extends="DefaultTemplate">
-<put-attribute name="title" value="Welcome" />  
-    <put-attribute name="body" value="/WEB-INF/views/Login/AdminLogin.jsp" />
-        
-</definition>
-<definition name="HRHomePage" extends="DefaultTemplate">
-<put-attribute name="title" value="Welcome" />  
-    <put-attribute name="body" value="/WEB-INF/views/Login/HRHomePage.jsp" />
-        
-</definition>
 
 
+	<definition name="HRHomePage" extends="DefaultTemplate">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsps/Admin/HRHomePage.jsp" />
+	</definition>
+
+	<definition name="EmployeeRegister" extends="DefaultTemplate">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/HR/EmployeeRegister.jsp" />
+
+	</definition>
+	<definition name="viewAllEmployees" extends="DefaultTemplate">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/HR/ViewAllEmployees.jsp" />
+
+	</definition>
+
+	<definition name="viewAndUpdateEmployee" extends="DefaultTemplate">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/HR/viewAndUpdateEmployee.jsp" />
+	</definition>
+
+<definition name="Department-form" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/Department/Department-form.jsp" />
+</definition>
+<!-- For Employee HomePage after Login -->
+
+<definition name="EmployeeHomePage" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsps/Employee/EmployeeHomePage.jsp" />
+</definition>
+<definition name="viewEmployeeProfile" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/EmployeeProfile.jsp" />
+</definition>
+<definition name="changePasswordPage" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/ChangePassword.jsp" />
+</definition>
+<definition name="leaveRequest" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/LeaveRequest.jsp" />
+</definition>
+<definition name="leaveHistoryRequest" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Admin/HRMenu.jsp" />
+<put-attribute name="header" value="/WEB-INF/jsps/Admin/HRHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/HR/LeaveHistory.jsp" />
+</definition>
 </tiles-definitions>

@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class DepartmentVO {
 	@Id
 	@Column(name = "DEPARTMENT_Id")
-	
 	private int DepartmentId;
 
 	@Column(name = "DEPARTMENT_Name")

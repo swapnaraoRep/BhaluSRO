@@ -1,0 +1,5 @@
+ .focus1:focus
+{
+border-style: solid;
+  border-width: 2px;
+}

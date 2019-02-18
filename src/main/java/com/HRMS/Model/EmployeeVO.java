@@ -11,17 +11,20 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Value;
 
+
 @Entity
-@Table(name="employees")
+@Table(name="hrms_employee_details")
 public class EmployeeVO implements Serializable 
 {
 	private static final long serialVersionUID = 1L;
@@ -30,37 +33,44 @@ public class EmployeeVO implements Serializable
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message="${valid.uname}")
+	//@NotEmpty(message="${valid.uname}")
+	
 	@Column(name="firstname")
 	private String firstName;
 	
-	@NotEmpty(message="is Required")
+//	@NotEmpty(message="is Required")
 	@Column(name="lastname")
-
 	private String lastName;
-	
-	@Column(name="email")
-	private String email;
-	
+
+	//@NotEmpty(message="is Required")
 	@Column(name="phone")
 	private String phone;
 	
+	//@NotEmpty(message="is Required")
 	@Column(name="dateofbirth")
 	private String dateOfBirth;
 	
+	//@NotEmpty(message="is Required")
 	@Column(name="hire_date")
 	private String hire_date;
 	
+	//@NotEmpty(message="is Required")
 	@Column(name="job_id")
-	private int job_id;
+	private Integer job_id;
 	
+	//@NotEmpty(message="is Required")
 	@Column(name="salary" , precision = 8, scale = 2)
 	private BigDecimal  salary;
 	
+	
+	
+	
+	//@NotEmpty(message="is Required")
 	@Column(name="DEPT_Id")
 	private String department_id;
 	
-	
+	@OneToOne(mappedBy="employeeVO" ,cascade=CascadeType.ALL)
+	private EmployeeVO_Login employeeLogin;
 	
 	public Integer getId() {
 		return id;
@@ -69,6 +79,18 @@ public class EmployeeVO implements Serializable
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+
+
+
+	public EmployeeVO_Login getEmployeeLogin() {
+		return employeeLogin;
+	}
+
+
+	public void setEmployeeLogin(EmployeeVO_Login employeeLogin) {
+		this.employeeLogin = employeeLogin;
 	}
 
 
@@ -89,16 +111,6 @@ public class EmployeeVO implements Serializable
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 
@@ -132,12 +144,12 @@ public class EmployeeVO implements Serializable
 	}
 
 
-	public int getJob_id() {
+	public Integer getJob_id() {
 		return job_id;
 	}
 
 
-	public void setJob_id(int job_id) {
+	public void setJob_id(Integer job_id) {
 		this.job_id = job_id;
 	}
 
@@ -164,7 +176,11 @@ public class EmployeeVO implements Serializable
 
 	@Override
 	public String toString() {
-		return "EmployeeVO [id=" + id + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ","+phone+"]";
+		return "EmployeeVO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", hire_date=" + hire_date + ", job_id="
+				+ job_id + ", salary=" + salary + ",department_id="
+				+ department_id + "]";
 	}
+
+
 }

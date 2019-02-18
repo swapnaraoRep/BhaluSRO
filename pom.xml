@@ -1,25 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com</groupId>
-  <artifactId>BhaluSRO</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <artifactId>HRMSProject</artifactId>
   <packaging>war</packaging>
-
+  <version>0.0.1-SNAPSHOT</version>
   <name>BhaluSRO Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-
+  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <hibernate.version>4.3.5.Final</hibernate.version>
-    <org.springframework-version>4.1.4.RELEASE</org.springframework-version>
-     <apachetiles.version>3.0.5</apachetiles.version>
+    <org.springframework-version>4.1.4.RELEASE</org.springframework-version><apachetiles.version>3.0.5</apachetiles.version>
   </properties>
 
   <dependencies>
@@ -128,6 +121,7 @@
         <artifactId>tiles-template</artifactId>
         <version>${apachetiles.version}</version>
         </dependency>
+		
 		
   </dependencies>
 

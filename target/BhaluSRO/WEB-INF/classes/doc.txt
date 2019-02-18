@@ -1,4 +1,124 @@
+create database sample;
+use sample;
+CREATE TABLE IF NOT EXISTS `employee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `password`  varchar(20) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `salary` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+INSERT INTO `employee` (`id`, `name`,`password`,`country`, `salary`) VALUES
+(1, 'Amit','check','INDIA', 30000),
+(2, 'Ajeet','check','INDIA', 40000),
+(3, 'James', 'check','INDIA',50000),
+(4, 'Sonoo','check','INDIA', 60000),
+(5, 'Sarfraz','check','INDIA', 70000),
+(6, 'Bob', 'check','INDIA',80000),
+(7, 'Rahul','check','INDIA', 90000),
+(8, 'Rakesh','check','INDIA', 25000),
+(9, 'Udit', 'check','INDIA',35000),
+(10, 'Jai', 'check','INDIA',45000);
+
+select * from EmployeeInfo;
+drop table EmployeeInfo;
+create table if not exists EmployeeInfo(
+ id int(11) NOT NULL AUTO_INCREMENT,
+ firstName  varchar(20) NOT NULL,
+ lastName varchar(20) NOT NULL,
+ email varchar(20) NOT NULL,
+ department_id BIGINT(20) NULL DEFAULT NULL,
+ primary key(id));
+ 
+ /*******************************************************/
+create database hrms;
+use hrms;
+/*for drop */
+DROP TABLE IF EXISTS employees;
+DROP TABLE IF EXISTS DEPARTMENT;
+/* for description*/
+desc employees;
+desc DEPARTMENT;
+/* Creation*/
+CREATE TABLE employees (
+ID INT NOT NULL  AUTO_INCREMENT,
+firstname VARCHAR(40),  
+lastname VARCHAR(40), 
+email VARCHAR(40),
+phone VARCHAR(40),  
+dateofbirth DATE,
+hire_date DATE,
+job_id VARCHAR(10) NOT NULL,
+salary decimal(8,2),
+PRIMARY KEY(ID),DEPT_Id INT NOT NULL ) ENGINE = InnoDB;
+
+
+
+CREATE TABLE DEPARTMENT (
+  DEPARTMENT_Id INT NOT NULL ,
+  DEPARTMENT_Name varchar(14) default NULL,
+  DEPARTMENT_Loc varchar(13) default NULL,
+  PRIMARY KEY(DEPARTMENT_Id) 
+) ENGINE=InnoDB;
+/*For Alter */
+
+alter table employees 
+add CONSTRAINT   FOREIGN KEY (DEPT_Id) REFERENCES DEPARTMENT(DEPARTMENT_Id) 
+ON DELETE CASCADE;
+ALTER TABLE employees
+    ADD COLUMN userName VARCHAR(25) ,ADD COLUMN password VARCHAR(25) ,ADD COLUMN role VARCHAR(25) AFTER salary;
+
+ALTER TABLE employees
+DROP COLUMN userName;
+/*For select*/
+select * from employees;
+select * from DEPARTMENT;
+delete from employees where DEPT_Id=1; 
+
+/********************employees************/
+DROP SCHEMA IF EXISTS `hb-01-one-to-one-uni`;
+
+CREATE SCHEMA `hb-01-one-to-one-uni`;
+
+use `hb-01-one-to-one-uni`;
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS `instructor_detail`;
+
+CREATE TABLE `instructor_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `youtube_channel` varchar(128) DEFAULT NULL,
+  `hobby` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS `instructor`;
+
+CREATE TABLE `instructor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `instructor_detail_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_DETAIL_idx` (`instructor_detail_id`),
+  CONSTRAINT `FK_DETAIL` FOREIGN KEY (`instructor_detail_id`) REFERENCES `instructor_detail` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+ 
+ 
+ 
 if u r not placing transactional in service ....u will get error becoz session should not open
 //Could not obtain transaction-synchronized Session for current thread
 
 hibernate detached error : dont privide values for primary key if u r giving auotgenerate to model class
+
+
+http://websystique.com/springmvc/spring-mvc-4-and-spring-security-4-integration-example/
+
+/************************/
+https://stackoverflow.com/questions/39404757/hibernate-fetch-data-from-two-tables-with-one-to-one-mapping

@@ -22,13 +22,29 @@ public class LoginServiceImpl implements LoginService {
 		this.loginDao = loginDao;
 	}
 
-	@Override
-	@Transactional
+	
+	/*@Transactional
 	public EmployeeVO validateUser(String uname, String password) {
 		// TODO Auto-generated method stub
 		System.out.println("serviceImpl:::"+uname+""+password);
 		EmployeeVO employee=loginDao.validateUser(uname, password);
 		return employee;
+	}*/
+
+
+	@Transactional
+	public EmployeeVO AuthenticateUser(String uname, String password) {
+		// TODO Auto-generated method stub
+		System.out.println("serviceImpl:::"+uname+""+password);
+		EmployeeVO employee=loginDao.AuthenticateUser(uname, password);
+		return employee;
+	}
+
+
+	@Transactional
+	public EmployeeVO validateUser(String uname, String password) {
+		
+		return loginDao.validateUser(uname, password);
 	}
 
 	

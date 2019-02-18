@@ -8,9 +8,11 @@
 <!------ Include the above in your HEAD tag ---------->
 <head>
 <spring:url value="/resources/style.css" var="mainCss" />
+<spring:url value="/resources/error.css" var="errCss" />
 	<link href="${mainCss}" rel="stylesheet" />
+	<link href="${errCss}" rel="stylesheet" />
 </head>
-<body>
+<body class="loginId">
 
 	<div id="login">
     <h3 class="text-center text-white pt-5">Login form</h3>
@@ -23,22 +25,22 @@
                       
                            <div class="form-group">
                            
-                         <label for="firstName" class="text-info">UserName</label><br>     
+                         <label for="employeeLogin.userName" class="text-info">UserName</label><br>     
 <%--                        <label for="firstName" class="text-info">${login.uname}</label><br> 
- --%>                        <form:input path="firstName" class="form-control"/>
-                        <form:errors path="firstName" cssClass="error" />
+ --%>                        <form:input path="employeeLogin.userName" class="form-control"/>
+                        <form:errors path="employeeLogin.userName" cssClass="error" />
                         </div>
                           <div class="form-group">
-                        <label for="lastName" class="text-info">Password</label><br>
-                        <form:input path="lastName" class="form-control"/>
-                          <form:errors path="lastName" cssClass="error" />
+                        <label for="employeeLogin.password" class="text-info">Password</label><br>
+                       <form:input  path="employeeLogin.password" class="form-control"/>
+                          <form:errors path="employeeLogin.password" cssClass="error" />
                         </div>
                          <div class="form-group">
                             <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                             <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                         </div>
                         <div id="register-link" class="text-right">
-                            <a href="employees" class="text-info">Register here</a>
+                            <a href="RegisterEmployee" class="text-info">Register here</a>
                         </div>
                      
                 </form:form>

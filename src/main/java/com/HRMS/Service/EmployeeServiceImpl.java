@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
+import com.HRMS.Model.EmployeeVO_Login;
+import com.HRMS.Model.Employee_Leaves;
+import com.HRMS.Model.Leaves;
 import com.HRMS.dao.EmployeeDao;
 import com.HRMS.dao.LoginDao;
 
@@ -23,44 +26,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 		this.employeeDao = employeeDao;
 	}
 
-	@Override
-	@Transactional
-	public void addEmployee(EmployeeVO e) {
-		System.out.println("EmployeeServiceImpl********* addEmployee"+e.getDepartment_id());
-		employeeDao.addEmployee(e);
-		
-	}
 
-	@Override
-	@Transactional
-	public void updateEmployee(EmployeeVO e) {
-		System.out.println("EmployeeServiceImpl********* updateEmployee"+e.getDepartment_id());
-		employeeDao.updateEmployee(e);
-		
-	}
-
-	@Override
-	@Transactional
-	public List<EmployeeVO> listPersons() {
-		// TODO Auto-generated method stub
-		return employeeDao.listPersons();
-	}
-
-	@Override
 	@Transactional
 	public EmployeeVO getEmployeeById(int id) {
 		return employeeDao.getEmployeeById(id);
 		
 	}
-
-	@Override
-	@Transactional
-	public void removeEmployee(int id) {
-		employeeDao.removeEmployee(id);
-		
-	}
-
-	@Override
 	@Transactional
 	public List<DepartmentVO> listDepartments() {
 		// TODO Auto-generated method stub
@@ -68,12 +39,35 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeDao.listDepartments();
 	}
 
-	@Override
 	@Transactional
 	public void addDepartment(DepartmentVO e) {
 		System.out.println("EmployeeServiceImpl********* addEmployee"+e.getDepartmentId());
 		employeeDao.addDepartment(e);
 		
 	}
+
+
+	@Transactional
+	public void updateEmployeePassword(EmployeeVO_Login employeeLogin) {
+		employeeDao.updateEmployeePassword(employeeLogin);
+	}
+	@Transactional
+	public void addLeaves(Leaves l) {
+		employeeDao.addLeaves(l);		
+	}
+
+	@Transactional
+	public void sendLeaveRequest(Employee_Leaves employeeLeave) {
+		employeeDao.sendLeaveRequest(employeeLeave);		
+	}
+
+	@Transactional
+	public List<Employee_Leaves> leaveHistory(int empId) {
+		// TODO Auto-generated method stub
+		return employeeDao.leaveHistory(empId);
+	}
+
+
+	
 
 }
