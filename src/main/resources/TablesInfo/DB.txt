@@ -19,3 +19,20 @@ CREATE TABLE `hrms`.`hrms_employee_leaves` (
     REFERENCES `hrms`.`leaves` (`leaveId`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
+    
+    
+    <!- EMPLOYEE PROJECTS DATABASE->
+    CREATE TABLE `hrms`.`hrms_employee_projects` (
+  `project_Id` INT NOT NULL AUTO_INCREMENT,
+  `empId` INT NULL,
+  `projectHandled` VARCHAR(45) NULL,
+  `dateStarted` DATE NULL,
+  `dateEnded` DATE NULL,
+  `Status` VARCHAR(45) NULL,
+  PRIMARY KEY (`project_Id`),
+  INDEX `empId_idx` (`empId` ASC),
+  CONSTRAINT `Projects_employee`
+    FOREIGN KEY (`empId`)
+    REFERENCES `hrms`.`hrms_employee_details` (`ID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);

@@ -31,13 +31,14 @@
       <li><a href="departments">Department</a></li> -->
 </ul>--%>
 <div class="btn-group-vertical">
-<spring:url value="/Admin/RegisterEmployee" var="RegisterEmployee" htmlEscape="true" />
-<a href="${RegisterEmployee}" class="btn btn-primary">Add Employee</a>
-<spring:url value="/Admin/viewAllEmployees" var="viewAllEmployees" htmlEscape="true" />
+<spring:url value="/Admin/AssignProjectRequest" var="AssignProject" htmlEscape="true" />
+<a href="${AssignProject}" class="btn btn-primary">Assign Project</a>
+<%-- <spring:url value="/Admin/viewAllEmployees" var="viewAllEmployees" htmlEscape="true" />
 <a href="${viewAllEmployees}" class="btn btn-primary">AllEmployees</a>
-
+<spring:url value="/Admin/departments" var="departments" htmlEscape="true" />
+<a href="${departments}" class="btn btn-primary">Department</a>
 <spring:url value="/leaveHistoryRequest" var="leaveHistory" htmlEscape="true" />
-<a href="${leaveHistory}" class="btn btn-primary">Leave History</a>
+<a href="${leaveHistory}" class="btn btn-primary">Leave History</a> --%>
    
   </div>
 </body>

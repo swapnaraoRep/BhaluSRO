@@ -99,11 +99,11 @@ public class EmployeeController {
 		}
 	 	@RequestMapping("/LeaveRequest")
 		public String LeaveRequest(Model model) {
-	 		Leaves l= new Leaves();
+	 		/*Leaves l= new Leaves();
 	 	
 	 		l.setLeaveName("Maternity");
 	 		l.setDays(2);
-	 		employeeService.addLeaves(l);
+	 		employeeService.addLeaves(l);*/
 	 		ArrayList<Integer> LeaveList=new ArrayList<Integer>();
 		 	LeaveList.add(1);
 		 	LeaveList.add(2);

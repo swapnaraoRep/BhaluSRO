@@ -8,9 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+  
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
+
 </head>
 <body>
  <ul class="nav navbar-nav">

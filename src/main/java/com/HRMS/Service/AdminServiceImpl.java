@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
+import com.HRMS.Model.Projects;
 import com.HRMS.dao.AdminDao;
 import com.HRMS.dao.EmployeeDao;
 
@@ -66,6 +67,12 @@ public class AdminServiceImpl implements AdminService{
 	public void addDepartment(DepartmentVO e) {
 		System.out.println("EmployeeServiceImpl********* addEmployee"+e.getDepartmentId());
 		adminDao.addDepartment(e);
+		
+	}
+
+	@Override
+	public void addProjects(Projects p) {
+		adminDao.addProjects(p);
 		
 	}
 

@@ -16,13 +16,13 @@
 <body>
  <ul class="nav navbar-nav">
    <li><a href="#">Home</a></li>
-         <li>
+         <li class="active">
          <spring:url value="Setup" var="Setup" htmlEscape="true" />
          <a href="Setup/${Setup}">Setup</a>
          </li>
         <li>
-        <spring:url value="Projects" var="Projects" htmlEscape="true" />
-        <a href="Admin/${Projects}">Projects</a>
+        <spring:url value="/Admin/Projects" var="Projects" htmlEscape="true" />
+        <a href="${Projects}">Projects</a>
         </li>
       
         </ul>

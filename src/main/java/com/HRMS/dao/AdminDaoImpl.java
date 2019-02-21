@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
+import com.HRMS.Model.Projects;
 
 @Repository("adminDao")
 public class AdminDaoImpl implements AdminDao{
@@ -86,6 +87,12 @@ public class AdminDaoImpl implements AdminDao{
 	public void addDepartment(DepartmentVO e) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(e);
+	}
+
+	@Override
+	public void addProjects(Projects p) {
+		getSession().saveOrUpdate(p);
+		
 	}
 
 

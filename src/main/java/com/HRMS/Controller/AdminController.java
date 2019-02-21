@@ -1,6 +1,7 @@
 package com.HRMS.Controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
 import com.HRMS.Model.EmployeeVO_Login;
+import com.HRMS.Model.Employee_Projects;
+import com.HRMS.Model.Projects;
 import com.HRMS.Service.AdminService;
 
 @Controller
@@ -32,8 +35,10 @@ public class AdminController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("listEmployees", this.adminService.listPersons());
-		modelAndView.addObject("DepartmentList", GetDepartmentList(this.adminService.listDepartments()));
-		modelAndView.setViewName("viewAndUpdateEmployee");
+		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
+	      List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
+	      modelAndView.addObject("DepartmentList",GetDropDownData(departmentArrayToList,"department"));	
+	      modelAndView.setViewName("viewAndUpdateEmployee");
 		return modelAndView;
 		
 	}
@@ -42,8 +47,9 @@ public class AdminController {
 	public String loadEmployeeRegisterPage(@ModelAttribute("employeeVO") EmployeeVO employeeVO,Model model )
 	{
 		List<DepartmentVO> dep=this.adminService.listDepartments();
-		
-		model.addAttribute("DepartmentList", GetDepartmentList(this.adminService.listDepartments()));
+		Object[] departmentListToArray = this.adminService.listDepartments().toArray();
+	      List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
+	      model.addAttribute("DepartmentList",GetDropDownData(departmentArrayToList,"department"));	
 		return "EmployeeRegister";
 	}
 	@RequestMapping("/saveEmployee")
@@ -69,7 +75,9 @@ public class AdminController {
       model.addAttribute("employeeVO", this.adminService.getEmployeeById(id));
       model.addAttribute("listEmployees", this.adminService.listPersons());
       
-      model.addAttribute("DepartmentList",GetDepartmentList(this.adminService.listDepartments()));
+      Object[] departmentListToArray = this.adminService.listDepartments().toArray();
+      List<Object> departmentArrayToList = Arrays.asList(departmentListToArray);
+      model.addAttribute("DepartmentList",GetDropDownData(departmentArrayToList,"department"));	
 	        return "viewAndUpdateEmployee";
   }
 
@@ -85,18 +93,67 @@ public class AdminController {
 		model.addAttribute("listEmployees", this.adminService.listPersons());
 		return "viewAllEmployees";
 	}
-	
-	
-	public List<Integer> GetDepartmentList(List<DepartmentVO> list)
+	/*Project Module*/
+	@RequestMapping("/Projects")
+	public ModelAndView LoadProject(Model model) {
+		ModelAndView modelAndView = new ModelAndView();
+		//modelAndView.addObject("employeeProjects", new Employee_Projects());
+		modelAndView.setViewName("ProjectModule");
+		return modelAndView;
+		
+		
+	}
+	@RequestMapping("/AssignProjectRequest")
+	public String loadProjectRegisterPage(@ModelAttribute("employeeProjects") Employee_Projects employeeProjects ,Model model )
 	{
-		List<Integer> DepartmentList=new ArrayList<Integer>();
-		for(DepartmentVO dept:list)
+		Object[] employeeListToArray = this.adminService.listPersons().toArray();
+	      List<Object> employeeArrayToList = Arrays.asList(employeeListToArray);
+		model.addAttribute("EmployeeList", GetDropDownData(employeeArrayToList,"employeeId"));
+		
+		return "AssignProjectRequest";
+	}
+	
+	/*@RequestMapping("/saveProject")
+	public String saveProject(@Valid @ModelAttribute("employeeProjects") Employee_Projects employeeProjects,BindingResult result,Model model )
+	{
+		
+		if(result.hasErrors())
 		{
-			DepartmentList.add(dept.getDepartmentId());
+			return "ProjectRegister";
 		}
-		return DepartmentList;
+		else
+		{
+
+	
+		this.adminService.addProjects(employeeProjects);
+		}
+			return "redirect:/Admin/getEmployeesData";
+	}*/
+	
+	
+	public List<Integer> GetDropDownData(List<Object> list,String type)
+	{
+		List<Integer> dataList=new ArrayList<Integer>();
+
+		if(type.equalsIgnoreCase("department"))
+		{
+			for(Object dept:list)
+			{
+				DepartmentVO department=(DepartmentVO)dept;
+				dataList.add(department.getDepartmentId());
+			}
+			
+		}
+		else
+		{
+			for(Object emp:list)
+			{
+				EmployeeVO department=(EmployeeVO)emp;
+				dataList.add(department.getId());
+			}	
+		}
 		
-		
+		return dataList;
 	}
 	
 }

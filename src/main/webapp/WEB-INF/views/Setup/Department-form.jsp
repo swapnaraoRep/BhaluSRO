@@ -17,7 +17,7 @@
 <link href="${tableCss}" rel="stylesheet" />
 </head>
 <body>
-<form:form action="${pageContext.request.contextPath}/addDepartments" modelAttribute="departmentVO">
+<form:form action="${pageContext.request.contextPath}/Setup/addDepartments" modelAttribute="departmentVO">
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>

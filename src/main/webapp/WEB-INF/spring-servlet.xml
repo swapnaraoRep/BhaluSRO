@@ -90,6 +90,9 @@
 				<beans:value>com.HRMS.Model.EmployeeVO_Login</beans:value>
 				<beans:value>com.HRMS.Model.Leaves</beans:value>
 				<beans:value>com.HRMS.Model.Employee_Leaves</beans:value>
+				<beans:value>com.HRMS.Model.Projects</beans:value>
+				<beans:value>com.HRMS.Model.Employee_Projects</beans:value>
+			
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

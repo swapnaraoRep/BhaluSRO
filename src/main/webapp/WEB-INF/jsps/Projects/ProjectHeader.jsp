@@ -16,18 +16,19 @@
 <body>
  <ul class="nav navbar-nav">
    <li><a href="#">Home</a></li>
-         <li>
-         <spring:url value="Setup" var="Setup" htmlEscape="true" />
-         <a href="Setup/${Setup}">Setup</a>
+       <li>
+         <spring:url value="/Setup/Setup" var="Setup" htmlEscape="true" />
+         <a href="${Setup}">Setup</a>
          </li>
-        <li>
-        <spring:url value="Projects" var="Projects" htmlEscape="true" />
-        <a href="Admin/${Projects}">Projects</a>
+        <li class="active"><spring:url value="/Admin/Projects" var="Projects" htmlEscape="true" />
+        <a href="${Projects}">Projects</a>
         </li>
-      
+        <li><a href="#" >Contact</a></li>
         </ul>
       <ul class="nav navbar-nav navbar-right">
-
+     
+<!--   <li><a href="LogOut"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+ --> 
  <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
 <a href="${LogOut}">LogOut</a></li>
    </ul>

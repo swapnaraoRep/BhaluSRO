@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
+import com.HRMS.Model.Projects;
 
 public interface AdminService {
 	public void addEmployee(EmployeeVO e);
@@ -13,4 +14,8 @@ public interface AdminService {
 	public EmployeeVO getEmployeeById(int id);
 	public void removeEmployee(int id);
 	public List<DepartmentVO> listDepartments();
+	/*Project Module Services*/
+	public void addProjects(Projects p);
+	
+	
 }
