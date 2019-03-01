@@ -32,6 +32,8 @@
 <td><form:errors path="DepartmentLoc" cssClass="error"/></td>
 </tr>
 <tr>
+>
+<tr>
  <%-- <c:forEach var="dept" items="${DepartmentList}" >
  <td  width="80">${dept.DepartmentName}</td>
  </c:forEach> --%>

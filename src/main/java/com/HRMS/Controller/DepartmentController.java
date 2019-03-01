@@ -13,9 +13,10 @@ import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Service.EmployeeService;
 @Controller
 public class DepartmentController {
-	
+	/*
 	@Autowired
 	EmployeeService employeeService;
+	
 	@RequestMapping("/departments")
 	public String loadDepartment(@ModelAttribute("departmentVO") DepartmentVO departmentVO,Model model) {
 		model.addAttribute("departmentVO", departmentVO);
@@ -32,5 +33,5 @@ public class DepartmentController {
  		this.employeeService.addDepartment(departmentVO);
  		model.addAttribute("DepartmentList", this.employeeService.listDepartments());
 		return "Department-form";
-	}
+	}*/
 }

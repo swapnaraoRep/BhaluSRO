@@ -61,11 +61,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employeeDao.sendLeaveRequest(employeeLeave);		
 	}
 
+
 	@Transactional
-	public List<Employee_Leaves> leaveHistory(int empId) {
+	public List<Leaves> getAllLeaves() {
 		// TODO Auto-generated method stub
-		return employeeDao.leaveHistory(empId);
+		return employeeDao.getAllLeaves();
 	}
+
+	
 
 
 	

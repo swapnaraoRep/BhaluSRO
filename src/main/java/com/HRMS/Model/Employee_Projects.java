@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "hrms_employee_projects")
@@ -25,18 +26,19 @@ public class Employee_Projects implements Serializable{
 	 */
 	private static final long serialVersionUID = 8388999932325411703L;
 	@Id
-	@GeneratedValue(generator="gen")
-    @GenericGenerator(name="gen",strategy="foreign",parameters=@Parameter(name="property",value="projects"))
-	private int project_Id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
 	private int empId;
 	
 	private String projectHandled;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateStarted;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateEnded;
 	private String Status;
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
-	 @PrimaryKeyJoinColumn//(name="leaveId" )
+	@JoinColumn(name="projectId")
 	private Projects projects;
 	
 	
@@ -78,19 +80,20 @@ public class Employee_Projects implements Serializable{
 	public void setProjects(Projects projects) {
 		this.projects = projects;
 	}
-	
-	public int getProject_Id() {
-		return project_Id;
+	public int getId() {
+		return Id;
 	}
-	public void setProject_Id(int project_Id) {
-		this.project_Id = project_Id;
+	public void setId(int id) {
+		Id = id;
 	}
 	@Override
 	public String toString() {
-		return "Employee_Projects [project_Id=" + project_Id + ", empId=" + empId + ", projectHandled=" + projectHandled
+		return "Employee_Projects [Id=" + Id + ", empId=" + empId + ", projectHandled=" + projectHandled
 				+ ", dateStarted=" + dateStarted + ", dateEnded=" + dateEnded + ", Status=" + Status + ", projects="
 				+ projects + "]";
 	}
+	
+	
 	
 	
 	

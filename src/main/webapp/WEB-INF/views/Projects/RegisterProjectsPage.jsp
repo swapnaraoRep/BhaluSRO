@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 <spring:url value="/resources/main.css" var="mainCss" />
 <spring:url value="/resources/error.css" var="errCss" />
+<script src="<c:url value="/js/main.js" />"></script>
 <link href="${mainCss}" rel="stylesheet" />
 <link href="${errCss}" rel="stylesheet" />
 
@@ -24,8 +25,8 @@
 <table align="center" >
 <th align ="center" style="color:#0E4679">Add Projects</th>
 <tr>
-<!-- <td>Employee ID</td> --><td><form:hidden path="project_Id" cssClass="focus1" /></td>
-<td><form:errors path="project_Id" cssClass="error"/></td></tr>
+<!-- <td>Employee ID</td> --><td><form:hidden path="Id" cssClass="focus1" /></td>
+<td><form:errors path="Id" cssClass="error"/></td></tr>
 <tr>
 <tr>
 <tr>
@@ -37,17 +38,36 @@
 
 </form:select> </td>
 <td><form:errors path="empId" cssClass="error"/></td></tr>
-
 <tr>
-<td>ProjectName(Handled)</td><td><form:input path="projectHandled" cssClass="focus1"/></td>
+
+<td>Project Id</td>
+<td><form:select path="projects.projectId" cssClass="focus1" onchange="load(this.value)">
+ <form:option value="0" label="--- Select ---"/>
+<form:options items="${projectIdList}"/>
+
+</form:select></td>
+<td><form:errors path="projects.projectId" cssClass="error" /></td>
+</tr>
+<%-- <tr>
+
+<td>ProjectName(Handled)</td>
+<td><form:select path="projectHandled" cssClass="focus1">
+ <form:option value="NONE" label="--- Select ---"/>
+<form:options items="${projectHandled}"/>
+
+</form:select></td>
+<td><form:errors path="projectHandled" cssClass="error" /></td>
+</tr> --%>
+<tr><td>ProjectName(Handled)</td>
+<td><form:input path="projectHandled" id="projectHandled" cssClass="error"/></td>
 <td><form:errors path="projectHandled" cssClass="error" /></td>
 </tr>
 <tr>
-<td>StartDate</td><td><form:input path="dateStarted" type="date" cssClass="focus1"/></td>
+<td>StartDate</td><td><form:input type="date"  path="dateStarted" cssClass="focus1"/></td>
 <td><form:errors path="dateStarted" cssClass="error" /></td>
 </tr>
 <tr>
-<td>EndDate</td><td><form:input path="dateEnded" type="date" cssClass="focus1"/></td>
+<td>EndDate</td><td><form:input type="date"  path="dateEnded" cssClass="focus1"/></td>
 <td><form:errors path="dateEnded" cssClass="error" /></td>
 </tr>
 <tr>

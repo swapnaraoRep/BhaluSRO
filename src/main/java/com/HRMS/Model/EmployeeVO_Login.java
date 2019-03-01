@@ -32,11 +32,11 @@ public class EmployeeVO_Login implements Serializable
 	@Column(name="userName",length=50)
 	private String userName;
 	
-	@NotEmpty
+	
 	@Column(name="password",length=50)
 	private String password;
 	
-    @NotEmpty
+  
 	@Column(name="confirmPassword",length=50)
 	private String confirmPassword;
 	

@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.HRMS.Model.DepartmentVO;
 import com.HRMS.Model.EmployeeVO;
+import com.HRMS.Model.EmployeeVOImage;
+import com.HRMS.Model.Employee_Leaves;
+import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Projects;
 import com.HRMS.dao.AdminDao;
 import com.HRMS.dao.EmployeeDao;
@@ -69,12 +72,26 @@ public class AdminServiceImpl implements AdminService{
 		adminDao.addDepartment(e);
 		
 	}
-
 	@Override
-	public void addProjects(Projects p) {
-		adminDao.addProjects(p);
-		
+	public void addProjects(Employee_Projects employeeProjects) {
+		adminDao.addProjects(employeeProjects);		
 	}
 
+	@Override
+	public List<Projects> projectsList() {
+		// TODO Auto-generated method stub
+		return adminDao.projectsList();
+	}
 
+	
+	public List<Employee_Leaves> leaveHistory(int empId) {
+		// TODO Auto-generated method stub
+		return adminDao.leaveHistory(empId);
+	}
+
+	@Override
+	public void addEmployeeImage(EmployeeVOImage e) {
+		adminDao.addEmployeeImage(e);
+		
+	}
 }

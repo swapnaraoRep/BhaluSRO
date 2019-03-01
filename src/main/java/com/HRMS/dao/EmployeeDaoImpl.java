@@ -63,42 +63,24 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 	public void addLeaves(Leaves l) {
 		Session session=sessionFactory.getCurrentSession();
-		System.out.println("From DaoIMPLLLLLLLLLLLL"+l.getDays()+"id"+l.getLeaveId());
-session.persist(l);
+		
+		session.persist(l);
 
 	}
 
 	public void sendLeaveRequest(Employee_Leaves employeeLeave) {
 		Session session=sessionFactory.getCurrentSession();
-		System.out.println("sendLeaveRequest DaoIMPLLLLLLLLLLLL"+employeeLeave.getTotal_days()+"id"+employeeLeave.getLeaves());
-session.persist(employeeLeave);
+		session.persist(employeeLeave);
 		
 	}
 
-	public List<Employee_Leaves> leaveHistory(int id) {
+	@Override
+	public List<Leaves> getAllLeaves() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Employee_Leaves> leaveHistory=new ArrayList<Employee_Leaves>();
-		
-//List<Object[]> rows=session.createSQLQuery("select l.start_date,l.end_date,v.leaveId,v.leaveName from hrms_employee_leaves as l, leaves v where l.leaveId=v.leaveId and empId="+id).list();
-		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).addEntity("l",Employee_Leaves.class).addJoin("v","l.leaves").list();
-		
-		for (Object[] row : rows) {
-		    for(Object obj : row) {
-		    	System.out.print(obj + "::");
-		    }
-		    System.out.println("\n");
-		}
-		for(Object[] row  :rows)
-{
-			Employee_Leaves e=  (Employee_Leaves)row[0] ;
-			Leaves leaves=(Leaves)row[1] ;
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+e.toString()+"&&&&&&&"+leaves.toString());
-			e.setLeaves(leaves);
-			leaveHistory.add(e);
-			
-}
-		
-		return leaveHistory;
+		List<Leaves> leavesList = session.createQuery("from Leaves").list();
+		System.out.println("From DaoIMPLLLLLLLLLLLL"+leavesList.get(0));
+		return leavesList;
 	}
 
+	
 }

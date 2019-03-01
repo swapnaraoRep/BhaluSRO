@@ -13,7 +13,16 @@
 <link href="${mainCss}" rel="stylesheet" />
 <spring:url value="/resources/tableDecor.css" var="tableCss" />
 <link href="${tableCss}" rel="stylesheet" />
+<script>
 
+function load(value){
+	
+	
+	
+}
+  
+
+</script>
 </head>
 <body>
 
@@ -22,8 +31,17 @@
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
-<td>Employee ID</td><td><input type="text" name="id" cssClass="focus1"/></td>
-<td><form:errors path="id" cssClass="error"/></td></tr>
+<td>Employee ID</td>
+<!-- <td><input type="text" name="id" cssClass="focus1"/></td> -->
+
+ <td><form:select path="id" cssClass="focus1" onchange="this.form.submit()">
+ <form:option value="0" label="--- Select ---"/>
+<form:options items="${EmployeeList}"/>
+
+</form:select>  
+</td>
+<td><form:errors path="id" cssClass="error"/></td>
+</tr>
 <tr>
 </tr>
 

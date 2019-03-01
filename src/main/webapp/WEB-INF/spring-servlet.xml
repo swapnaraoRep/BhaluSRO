@@ -36,6 +36,7 @@
     <beans:property name="fallbackToSystemLocale" value="false"/>
 </beans:bean>
 	<resources mapping="/resources/**" location="/WEB-INF/CSS/theme1/" /> 
+	<resources mapping="/js/**" location="/WEB-INF/JS/" /> 
 	
 <!-- 	<context:property-placeholder location="classpath:messages.properties"/>
  -->	<!-- For tiles -->
@@ -54,6 +55,16 @@
 </beans:property>
 
 </beans:bean>
+<!-- For upload image -->
+
+    <beans:bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+          <beans:property name="maxUploadSize" value="20971520"/>   <!-- 20MB -->
+           <beans:property name="maxInMemorySize" value="1048576" />  <!-- 1MB -->
+    </beans:bean>
+    
+    <!-- one of the properties available; the maximum file size in bytes -->  
+    <!-- <property name="maxUploadSize" value="40000000" /> -->  
 
 <!-- Bean View Resolver -->
 	<!-- <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
@@ -86,6 +97,7 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.HRMS.Model.EmployeeVO</beans:value>
+				<beans:value>com.HRMS.Model.EmployeeVOImage</beans:value>
 				<beans:value>com.HRMS.Model.DepartmentVO</beans:value>
 				<beans:value>com.HRMS.Model.EmployeeVO_Login</beans:value>
 				<beans:value>com.HRMS.Model.Leaves</beans:value>

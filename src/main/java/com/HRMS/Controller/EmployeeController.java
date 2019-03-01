@@ -1,6 +1,7 @@
 package com.HRMS.Controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +41,6 @@ public class EmployeeController {
 	 	@RequestMapping("/viewProfile/{id}")
 		  public String getEmployeeById(@PathVariable("id") int id,@ModelAttribute("user") EmployeeVO employeeVO, Model model){
 	 	
-	 		/*System.out.println(":::::::::::::"+employeeVO.getId());
-	        model.addAttribute("listEmployees", this.employeeService.getEmployeeById(id));
-	        model.addAttribute("user", this.employeeService.getEmployeeById(id));*/
-
 	  	        return "viewEmployeeProfile";
 	    }
 	 	@RequestMapping("/LoadchangePassword/{id}")
@@ -65,13 +62,9 @@ public class EmployeeController {
 		}
 	 	@RequestMapping("/UpdatePassword/{id}")
 		public ModelAndView updatePassword(@Valid @ModelAttribute("employeeLogin") EmployeeVO_Login employeeLogin,BindingResult result,
-				@PathVariable("id") int id
-			
-		) {
+				@PathVariable("id") int id) {
 	 		
-	 		System.out.println("^^^^^^^^^^^^^"+sampleName+result);
 	 		ModelAndView modelAndView = new ModelAndView();
-	 		//System.out.println("*******"+oldPassword+"...."+password);
 	 		if (result.hasErrors()) {
 	 			System.out.println("**********444444444**********"+result.getFieldError());
 	 			modelAndView.setViewName("changePasswordPage");
@@ -99,17 +92,10 @@ public class EmployeeController {
 		}
 	 	@RequestMapping("/LeaveRequest")
 		public String LeaveRequest(Model model) {
-	 		/*Leaves l= new Leaves();
-	 	
-	 		l.setLeaveName("Maternity");
-	 		l.setDays(2);
-	 		employeeService.addLeaves(l);*/
-	 		ArrayList<Integer> LeaveList=new ArrayList<Integer>();
-		 	LeaveList.add(1);
-		 	LeaveList.add(2);
-		 	model.addAttribute("LeaveList", LeaveList);
-
 			model.addAttribute("employeeLeave", new Employee_Leaves());
+			List<Leaves> list=this.employeeService.getAllLeaves();
+			System.out.println(list);
+			model.addAttribute("LeavesList",this.employeeService.getAllLeaves());
 			return "leaveRequest";
 		}
 	 	@RequestMapping("/sendLeaveRequest")
@@ -117,28 +103,10 @@ public class EmployeeController {
 	 	ModelAndView modelandView=new ModelAndView();
 	 	System.out.println("employeeLeave"+employeeLeave.getLeaves().getLeaveId());
 	 	employeeService.sendLeaveRequest(employeeLeave);
-	 	model.addAttribute("Success","successFullyAdded"+employeeLeave.getEmpId());
+	 	model.addAttribute("Success","Request Send Successfully");
 			return "leaveRequest";
 		}
-	 	@RequestMapping("/leaveHistoryRequest")
-		public ModelAndView LeaveHistory(@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model) {
-	 	ModelAndView modelandView=new ModelAndView();
 	 	
-	 	modelandView.addObject("employeeLeave", new Employee_Leaves());
-	 	modelandView.setViewName("leaveHistoryRequest");
-			return modelandView;
-		}
-	 	
-	 	@RequestMapping("/searchLeaveHistory")
-		public ModelAndView findLeaveHistory(@RequestParam("id") int id,@ModelAttribute("employeeLeave") Employee_Leaves employeeLeave,Model model) {
-	 	ModelAndView modelandView=new ModelAndView();
-	 	System.out.println("nameeeee"+id);
-	 	modelandView.addObject("employeeLeave", new Employee_Leaves());
-	 	List<Employee_Leaves> history=employeeService.leaveHistory(id);
-	 	model.addAttribute("history", history);
-	 	modelandView.setViewName("leaveHistoryRequest");
-			return modelandView;
-		}
 	 /*	@RequestMapping("/employee1-1")
 		public String addEmployeeAndRole(@ModelAttribute("employee") EmployeeVO employeeVO1,Model model)
 		{

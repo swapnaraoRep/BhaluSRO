@@ -74,11 +74,11 @@
 <td><form:errors path="employeeLogin.id" cssClass="error"/></td>
 </tr>
 <tr>
-<td>UserName(*)</td><td><form:input path="employeeLogin.userName" cssClass="focus1"  readonly="true" style="background-color:grey;cursor: none;"/></td>
+<td>UserName(*)</td><td><form:input path="employeeLogin.userName" cssClass="focus1"  /></td>
 <td><form:errors path="employeeLogin.userName" cssClass="error"/></td>
 </tr>
 <tr>
-<td>Password</td><td><form:password path="employeeLogin.password" cssClass="focus1" readonly="true" style="background-color:grey;cursor: none;"/></td>
+<td>Password</td><td><form:password path="employeeLogin.password" cssClass="focus1" /></td>
 <td><form:errors path="employeeLogin.password" cssClass="error"/></td>
 </tr>
 <tr>

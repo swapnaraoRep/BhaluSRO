@@ -16,6 +16,5 @@ public interface EmployeeDao {
 	public void updateEmployeePassword(EmployeeVO_Login employeeLogin);
 	public void addLeaves(Leaves l);
 	public void sendLeaveRequest(Employee_Leaves employeeLeave);
-	public List<Employee_Leaves> leaveHistory(int empId);
-	
+	public List<Leaves> getAllLeaves();
 }
