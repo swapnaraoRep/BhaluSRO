@@ -1,5 +1,6 @@
 package com.HRMS.Controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -8,6 +9,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.apache.catalina.util.Base64;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -68,7 +70,7 @@ public class LoginController {
 			BindingResult result,
 			@RequestParam("employeeLogin.userName") String email,
 			@RequestParam("employeeLogin.password") String password,
-			Model model)
+			Model model) throws UnsupportedEncodingException
 	{
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("email:::"+email);
@@ -96,11 +98,19 @@ public class LoginController {
 			else
 			{
 				//System.out.println("IN ELSE ********"+employee.getRole());
-
+				
 				modelAndView.setViewName("EmployeeHomePage");
 				
 			}
-			
+			System.out.println("LOGIN CONTROLLLER"+employee.getPhoto());
+			if(employee.getPhoto()!=null)
+			{
+				@SuppressWarnings("deprecation")
+				byte[] encodeBase64 = Base64.encode(employee.getPhoto()).getBytes();
+			    String base64Encoded = new String(encodeBase64, "UTF-8");
+			    model.addAttribute("userImage", base64Encoded );
+			}
+		
 			model.addAttribute(employee);
 			modelAndView.addObject("user", employee);
 			modelAndView.addObject("login", employee);

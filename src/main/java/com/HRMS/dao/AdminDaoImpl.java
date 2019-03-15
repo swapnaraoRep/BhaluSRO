@@ -16,6 +16,7 @@ import com.HRMS.Model.Employee_Leaves;
 import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Leaves;
 import com.HRMS.Model.Projects;
+import com.mysql.jdbc.Blob;
 
 @Repository("adminDao")
 public class AdminDaoImpl implements AdminDao{
@@ -112,7 +113,6 @@ public class AdminDaoImpl implements AdminDao{
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Employee_Leaves> leaveHistory=new ArrayList<Employee_Leaves>();
 		
-//List<Object[]> rows=session.createSQLQuery("select l.start_date,l.end_date,v.leaveId,v.leaveName from hrms_employee_leaves as l, leaves v where l.leaveId=v.leaveId and empId="+id).list();
 		List<Object[]> rows=session.createSQLQuery("select {l.*},{v.*} from hrms_employee_leaves as l join leaves v on l.leaveId=v.leaveId where empId="+id).addEntity("l",Employee_Leaves.class).addJoin("v","l.leaves").list();
 		
 		for (Object[] row : rows) {
@@ -125,7 +125,6 @@ public class AdminDaoImpl implements AdminDao{
 {
 			Employee_Leaves e=  (Employee_Leaves)row[0] ;
 			Leaves leaves=(Leaves)row[1] ;
-			System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+e.toString()+"&&&&&&&"+leaves.toString());
 			e.setLeaves(leaves);
 			leaveHistory.add(e);
 			
@@ -140,6 +139,13 @@ public class AdminDaoImpl implements AdminDao{
 		//session.persist(e);
 		session.saveOrUpdate(e);
 		
+	}
+
+	@Override
+	public Blob getEmployeePhotoById(int id) {
+		Session session=sessionFactory.getCurrentSession();
+		//List<Projects> List = session.createQuery("from Projects").list()//select photo from student where id=?"
+		return null;
 	}
 
 }

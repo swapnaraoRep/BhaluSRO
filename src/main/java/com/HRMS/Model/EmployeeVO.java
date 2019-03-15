@@ -17,6 +17,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -69,6 +70,19 @@ public class EmployeeVO implements Serializable
 	@Column(name="DEPT_Id")
 	private String department_id;
 	
+	@Lob
+	 @Column(name="photo")
+	private  byte[] photo;
+	
+	
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 	@OneToOne(mappedBy="employeeVO" ,cascade=CascadeType.ALL)
 	private EmployeeVO_Login employeeLogin;
 	

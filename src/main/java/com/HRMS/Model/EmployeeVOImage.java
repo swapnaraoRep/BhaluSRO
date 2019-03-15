@@ -79,6 +79,7 @@ public class EmployeeVOImage implements Serializable
 	 @Column(name="photo")
 	private  byte[] photo;
 	
+	
 	public byte[] getPhoto() {
 		return photo;
 	}
@@ -182,10 +183,9 @@ public class EmployeeVOImage implements Serializable
 
 	@Override
 	public String toString() {
-		return "EmployeeVO [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phone=" + phone + ", dateOfBirth=" + dateOfBirth + ", hire_date=" + hire_date + ", job_id="
-				+ job_id + ", salary=" + salary + ",department_id="
-				+ department_id + "]";
+		return "EmployeeVOImage [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone
+				+ ", dateOfBirth=" + dateOfBirth + ", hire_date=" + hire_date + ", job_id=" + job_id + ", salary="
+				+ salary + ", department_id=" + department_id + "]";
 	}
 
 

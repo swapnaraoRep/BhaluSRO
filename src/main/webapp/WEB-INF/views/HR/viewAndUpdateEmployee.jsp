@@ -121,7 +121,7 @@
 			<th width="120">DepartmentId</th>
 		<th width="80">Role</th>
 		<th width="120">Email</th>
-		
+		<th width="120">Photo</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>
@@ -139,7 +139,7 @@
 				<td width="120">${employee.department_id}</td>
 				<td width="120">${employee.employeeLogin.role}</td>
 				<td width="120">${employee.employeeLogin.userName}</td>
-				
+				<td width="120"> <img width="100" height="100" src='${pageContext.request.contextPath}/Admin/getEmployeePhoto/${employee.id}'/></td>
 			<td width="60"><a href="<c:url value='/Admin/editEmployee/${employee.id}' />" >Edit</a></td>
 			<td width="60"><a href="<c:url value='/Admin/removeEmployee/${employee.id}' />" >Delete</a></td>
 		</tr>

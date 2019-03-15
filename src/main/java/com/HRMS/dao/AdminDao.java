@@ -8,6 +8,7 @@ import com.HRMS.Model.EmployeeVOImage;
 import com.HRMS.Model.Employee_Leaves;
 import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Projects;
+import com.mysql.jdbc.Blob;
 
 public interface AdminDao {
 	
@@ -17,6 +18,7 @@ public interface AdminDao {
 	public void updateEmployee(EmployeeVO e);
 	public List<EmployeeVO> listPersons();
 	public EmployeeVO getEmployeeById(int id);
+	public Blob getEmployeePhotoById(int id);
 	public void removeEmployee(int id);
 	public List<DepartmentVO> listDepartments();
 	

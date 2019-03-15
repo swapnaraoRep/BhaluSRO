@@ -24,6 +24,10 @@
      
 <!--   <li><a href="LogOut"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
  --> 
+ <c:if test="${!empty userImage}">
+ <li><img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></li>
+ </c:if>
+ <%-- <li><img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></li> --%>
  <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
 <a href="${LogOut}">LogOut</a></li>
    </ul>

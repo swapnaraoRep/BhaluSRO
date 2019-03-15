@@ -27,8 +27,9 @@
       
         </ul>
       <ul class="nav navbar-nav navbar-right">
-
- <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
+<c:if test="${!empty userImage}">
+ <li><img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></li>
+ </c:if> <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
 <a href="${LogOut}">LogOut</a></li>
    </ul>
 </body>

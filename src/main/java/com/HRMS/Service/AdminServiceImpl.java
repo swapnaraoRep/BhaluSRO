@@ -14,6 +14,7 @@ import com.HRMS.Model.Employee_Projects;
 import com.HRMS.Model.Projects;
 import com.HRMS.dao.AdminDao;
 import com.HRMS.dao.EmployeeDao;
+import com.mysql.jdbc.Blob;
 
 @Transactional
 @Service("adminService")
@@ -93,5 +94,11 @@ public class AdminServiceImpl implements AdminService{
 	public void addEmployeeImage(EmployeeVOImage e) {
 		adminDao.addEmployeeImage(e);
 		
+	}
+
+	@Override
+	public Blob getEmployeePhotoById(int id) {
+		// TODO Auto-generated method stub
+		return adminDao.getEmployeePhotoById(id);
 	}
 }

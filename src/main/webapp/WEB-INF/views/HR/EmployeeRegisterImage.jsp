@@ -18,7 +18,7 @@
 <body>
 <div class="col-sm-8 text-left"> 
 <c:url var="addAction" value="/Admin/saveEmployeeImage" ></c:url>
-<form:form action="${addAction}" method="POST" enctype="multipart/form-data" modelAttribute="employeeVOImage"  >
+<form:form action="${addAction}" method="post" enctype="multipart/form-data" modelAttribute="employeeVOImage"  >
 <div id="addEmployeeDiv">
 <table align="center" >
 <th align ="center" style="color:#0E4679">Employee Details</th>
@@ -67,8 +67,8 @@
 <td><form:errors path="department_id" cssClass="error"/></td>
 </tr>
 <tr><td>Upload Image</td>
- <!-- <td><input type="file" name="photo" /></td> -->
-<td><form:input type="file" path="photo" id="file" cssClass="focus1"/></td> 
+ <td><input type="file" name="image" id="image"/></td>
+<%-- <td><form:input type="file" path="photo" id="photo" cssClass="focus1"/></td>  --%>
 
 
 </tr>
@@ -78,7 +78,10 @@
 <td><input type="submit"/></td>
 
 </tr>
-
+<tr>
+<td>
+<a href="retrieveImage">ViewImage</a></td>
+</tr>
 </table>
 
 </div>	

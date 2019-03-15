@@ -35,6 +35,7 @@
 			<th width="120">Salary</th>
 			<th width="120">DepartmentId</th>
 		<th width="120">Role</th>
+		<th width="120">Image</th>
 		<th width="60">Edit</th>
 		<th width="60">Delete</th>
 	</tr>
@@ -51,7 +52,10 @@
 				<td width="120">${employee.job_id}</td>
 				<td width="120">${employee.salary}</td> 
 				<td width="120">${employee.department_id}</td>
-					<td width="120">${employee.employeeLogin.role}</td>
+				<td width="120">${employee.employeeLogin.role}</td><%-- <img src="data:image/jpeg;base64,${userImage}" /> --%>
+<%-- 				<td width="120"> <img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></td>
+ --%>				<td width="120"> <img width="100" height="100" src='${pageContext.request.contextPath}/Admin/getEmployeePhoto/${employee.id}'/></td>
+			
 			<td width="60"><a href="<c:url value='/Admin/editEmployee/${employee.id}' />" >Edit</a></td>
 			<td width="60"><a href="<c:url value='/Admin/removeEmployee/${employee.id}' />" >Delete</a></td>
 		</tr>

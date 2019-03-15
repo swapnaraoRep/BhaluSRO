@@ -63,17 +63,7 @@
            <beans:property name="maxInMemorySize" value="1048576" />  <!-- 1MB -->
     </beans:bean>
     
-    <!-- one of the properties available; the maximum file size in bytes -->  
-    <!-- <property name="maxUploadSize" value="40000000" /> -->  
-
-<!-- Bean View Resolver -->
-	<!-- <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-	 
-		<beans:property name="order" value="0" />
-	</beans:bean>
-	<beans:bean id="viewAndUpdateEmployee" class="org.springframework.web.servlet.view.JstlView">
- <beans:property name="url" value="/WEB-INF/views/Employee/viewAndUpdateEmployee.jsp" ></beans:property>
-</beans:bean> -->
+    
 
 <!-- ResourceBundleViewResolver -->
 <beans:bean class = "org.springframework.web.servlet.view.ResourceBundleViewResolver">
