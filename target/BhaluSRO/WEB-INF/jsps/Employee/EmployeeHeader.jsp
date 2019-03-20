@@ -8,9 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+  
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
+<script>
+function changeProfilePic()
+{
+	document.getElementById("ProfilePicChangeForm").submit();
+}
+</script>
 </head>
 <body>
  <ul class="nav navbar-nav">
@@ -23,6 +29,16 @@
      
 <!--   <li><a href="LogOut"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
  --> 
+ 
+ <c:if test="${!empty userImage}">
+ <c:url var="changeProfilePic" value="/changeProfilePic"></c:url>
+ 
+  <li><form:form id="ProfilePicChangeForm" action="${changeProfilePic}" modelAttribute="employeeLogin"><img id="ProfilePic" width="100" height="100" src="data:image/jpeg;base64,${userImage}"  style="cursor: pointer;" onclick="changeProfilePic()"/>
+ </form:form></li>
+ 
+ 
+ </c:if>
+ <%-- <li><img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></li> --%>
  <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
 <a href="${LogOut}">LogOut</a></li>
    </ul>

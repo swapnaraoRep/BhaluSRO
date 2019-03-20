@@ -24,12 +24,14 @@
 <td><form:hidden path="empId" value="${login.id}" cssClass="focus1"/></td>
 <td><form:errors path="empId" cssClass="error" /></td>
 </tr>
-<td>Leave ID</td><td><form:select path="leaveId" cssClass="focus1">
+<td>Leave ID</td><td><form:select path="leaves.leaveId" cssClass="focus1">
  <form:option value="0" label="--- Select ---"/>
-<form:options items="${LeaveList}"/>
-
+ <c:forEach items="${LeavesList}" var="leaves">
+                   <form:option value="${leaves.leaveId}">${leaves.leaveId}
+                   </form:option>
+                </c:forEach>
 </form:select> </td>
-<td><form:errors path="leaveId" cssClass="error"/></td></tr>
+<td><form:errors path="leaves.leaveId" cssClass="error"/></td></tr>
 
 <tr>
 <td>Start Date(*)</td><td><form:input type="date" path="start_date" cssClass="focus1"/></td>

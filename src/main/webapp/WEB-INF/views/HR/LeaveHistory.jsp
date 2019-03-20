@@ -13,16 +13,7 @@
 <link href="${mainCss}" rel="stylesheet" />
 <spring:url value="/resources/tableDecor.css" var="tableCss" />
 <link href="${tableCss}" rel="stylesheet" />
-<script>
 
-function load(value){
-	
-	
-	
-}
-  
-
-</script>
 </head>
 <body>
 

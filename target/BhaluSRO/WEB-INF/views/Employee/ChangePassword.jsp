@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <spring:url value="/resources/main.css" var="mainCss" />
-<spring:url value="/resources/main.css" var="errCss" />
+<spring:url value="/resources/error.css" var="errCss" />
 <link href="${mainCss}" rel="stylesheet" />
 <link href="${errCss}" rel="stylesheet" />
 </head>
@@ -23,10 +23,10 @@ function validatePassWord(enterPass,oldPass)
 }
 </script>
 <body>
-${login.employeeLogin.role}
-<div class="col-sm-8 text-left"> 
 
-<form:form action="${pageContext.request.contextPath}/UpdatePassword/${login.id}/${login.employeeLogin.password}"  modelAttribute="employeeLogin">
+
+<form:form action="${pageContext.request.contextPath}/UpdatePassword/${login.id}"  modelAttribute="employeeLogin">
+<div class="col-sm-8 text-left"> 
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
@@ -38,20 +38,17 @@ ${login.employeeLogin.role}
 <td><form:errors path="role" cssClass="error"/></td>
 </tr>
 <tr>
-<td>Current Password</td><td><input type="text" name="oldPassword" cssClass="focus1"/></td>
-</tr>
-<tr>
 <td>New Password</td><td><form:password path="password" cssClass="focus1"/></td>
 <td><form:errors path="password" cssClass="error"/></td>
 </tr>
-
+<tr></tr>
  <tr>
 <td>Confirm Password</td><td><form:password  path="confirmPassword" cssClass="focus1"/></td>
 <td><form:errors path="confirmPassword" cssClass="error"/></td>
 </tr> 
 <tr>
 <td><input type="submit" value="changePassword"/></td>
-
+<td align="right"> <a href="Login">Login Again?</a></td>
 </tr>
 <tr>
 
@@ -60,13 +57,14 @@ ${login.employeeLogin.role}
 </tr>
 </table>
 </div>
+
+</div>
 </form:form>
 <c:if test="${!empty PasswordFlag}">
 ${PasswordFlag}
+       
+    
 </c:if>
-<c:if test="${empty PasswordFlag}">
-<p></p>
-</c:if>
-</div>
+
 </body>
 </html>

@@ -15,7 +15,11 @@
 </head>
 <body>
  <ul class="nav navbar-nav">
-   <li><a href="#">Home</a></li>
+    
+         <li>
+         <spring:url value="/Admin/HRHome" var="HRHome" htmlEscape="true" />
+         <a href="${HRHome}">Home</a>
+         </li>
          <li>
          <spring:url value="/Setup/Setup" var="Setup" htmlEscape="true" />
          <a href="${Setup}">Setup</a>

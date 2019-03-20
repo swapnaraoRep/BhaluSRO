@@ -22,8 +22,17 @@
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
-<td>Employee ID</td><td><input type="text" name="id" cssClass="focus1"/></td>
-<td><form:errors path="id" cssClass="error"/></td></tr>
+<td>Employee ID</td>
+<!-- <td><input type="text" name="id" cssClass="focus1"/></td> -->
+
+ <td><form:select path="id" cssClass="focus1" onchange="this.form.submit()">
+ <form:option value="0" label="--- Select ---"/>
+<form:options items="${EmployeeList}"/>
+
+</form:select>  
+</td>
+<td><form:errors path="id" cssClass="error"/></td>
+</tr>
 <tr>
 </tr>
 
@@ -49,6 +58,7 @@
 		<th width="120">EndDate</th>
 		<th width="120">Total Days</th>
 		<th width="120">Leave Id</th>
+		<th width="120">Leave Name</th>
 		
 		
 		<th width="60">Edit</th>
@@ -61,7 +71,8 @@
 				<td width="120">${history.start_date}</td>
 				<td width="120">${history.end_date}</td>
 				<td width="120">${history.total_days}</td>
-				<td width="120">${history.leaveId}</td>
+				<td width="120">${history.leaves.leaveId}</td>
+				<td width="120">${history.leaves.leaveName}</td>
 				
 			<td width="60"><a href="<c:url value='/editEmployee/${history.empId}' />" >Edit</a></td>
 			<td width="60"><a href="<c:url value='/removeEmployee/${history.empId}' />" >Delete</a></td>

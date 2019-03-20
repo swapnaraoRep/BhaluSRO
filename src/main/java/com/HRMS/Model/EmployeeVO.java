@@ -70,19 +70,7 @@ public class EmployeeVO implements Serializable
 	@Column(name="DEPT_Id")
 	private String department_id;
 	
-	@Lob
-	 @Column(name="photo")
-	private  byte[] photo;
 	
-	
-	public byte[] getPhoto() {
-		return photo;
-	}
-
-
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
 	@OneToOne(mappedBy="employeeVO" ,cascade=CascadeType.ALL)
 	private EmployeeVO_Login employeeLogin;
 	

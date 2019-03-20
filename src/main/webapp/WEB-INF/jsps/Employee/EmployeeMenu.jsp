@@ -33,9 +33,14 @@
 <spring:url value="/viewProfile/${user.id}" var="viewProfile" htmlEscape="true" />
 <a href="${viewProfile}" class="btn btn-primary">View Profile</a>
    <spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
-<a href="${changePassword}" class="btn btn-primary">Change Password</a>
+ <a href="${changePassword}" class="btn btn-primary">EditProfile
+  <spring:url value="/images" var="images" />
+    <img src="${images}/editIcon.png" width="30" height="23" /> 
+</a>
 <spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
 	<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a>
+
+
   </div>
 </body>
 </html>

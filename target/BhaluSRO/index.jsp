@@ -48,7 +48,7 @@
   </style>
 </head>
 <body>
-
+<div class="container">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -67,7 +67,8 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      
+        <li><a href="Login" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -95,7 +96,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
 </footer>

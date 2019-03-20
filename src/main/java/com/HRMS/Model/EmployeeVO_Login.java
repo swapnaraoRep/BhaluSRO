@@ -9,17 +9,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="hrms_login")
+@DynamicInsert
 public class EmployeeVO_Login implements Serializable 
 {
     @Id
@@ -28,7 +31,7 @@ public class EmployeeVO_Login implements Serializable
     @GenericGenerator(name="gen",strategy="foreign",parameters=@Parameter(name="property",value="employeeVO"))
     private Integer id;
 	
-  
+    
 	@Column(name="userName",length=50)
 	private String userName;
 	
@@ -43,6 +46,20 @@ public class EmployeeVO_Login implements Serializable
   
 	@Column(name="role",length=50)
 	private String role;
+	
+	@Lob
+	 @Column(name="photo")
+	private  byte[] photo;
+	
+	
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 	
 	@OneToOne(cascade=CascadeType.ALL)
     @PrimaryKeyJoinColumn

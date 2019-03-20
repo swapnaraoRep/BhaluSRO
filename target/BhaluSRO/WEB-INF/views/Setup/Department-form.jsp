@@ -17,7 +17,7 @@
 <link href="${tableCss}" rel="stylesheet" />
 </head>
 <body>
-<form:form action="${pageContext.request.contextPath}/addDepartments" modelAttribute="departmentVO">
+<form:form action="${pageContext.request.contextPath}/Setup/addDepartments" modelAttribute="departmentVO">
 <div id="addEmployeeDiv">
 <table align="center" >
 <tr>
@@ -31,6 +31,8 @@
 <td> Location(*)</td><td><form:input path="DepartmentLoc" cssClass="focus1"/></td>
 <td><form:errors path="DepartmentLoc" cssClass="error"/></td>
 </tr>
+<tr>
+>
 <tr>
  <%-- <c:forEach var="dept" items="${DepartmentList}" >
  <td  width="80">${dept.DepartmentName}</td>

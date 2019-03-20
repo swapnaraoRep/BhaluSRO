@@ -16,17 +16,31 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 
-	<annotation-driven />
+	<annotation-driven  validator="validator"/>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 		<!-- reference from 
 		https://www.mkyong.com/spring-mvc/spring-mvc-how-to-include-js-or-css-files-in-a-jsp-page/
 		 -->
+		 <!-- Validator -->
+<beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    <beans:property name="validationMessageSource" ref="messageSource"/>
+</beans:bean>
+<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <beans:property name="basenames" value="messages" />
+    <beans:property name="defaultEncoding" value="UTF-8" />
+  	<beans:property name="useCodeAsDefaultMessage" value="true"/>
+    <!-- The key here is fallbackToSystemLocale which prevents the system to look into the system, 
+        thus using "message.properties" if he doesn't find the locale. -->
+    <beans:property name="fallbackToSystemLocale" value="false"/>
+</beans:bean>
 	<resources mapping="/resources/**" location="/WEB-INF/CSS/theme1/" /> 
+	<resources mapping="/js/**" location="/WEB-INF/JS/" /> 
+	<resources mapping="/images/**" location="/WEB-INF/CSS/images/" /> 
 	
-	<context:property-placeholder location="classpath:messages.properties"/>
-	<!-- For tiles -->
+<!-- 	<context:property-placeholder location="classpath:messages.properties"/>
+ -->	<!-- For tiles -->
 <beans:bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">  
 <beans:property name="viewClass">  
     <beans:value>org.springframework.web.servlet.view.tiles3.TilesView</beans:value>  
@@ -42,31 +56,23 @@
 </beans:property>
 
 </beans:bean>
+<!-- For upload image -->
 
-<!-- Bean View Resolver -->
-	<!-- <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-	 
-		<beans:property name="order" value="0" />
-	</beans:bean>
-	<beans:bean id="viewAndUpdateEmployee" class="org.springframework.web.servlet.view.JstlView">
- <beans:property name="url" value="/WEB-INF/views/Employee/viewAndUpdateEmployee.jsp" ></beans:property>
-</beans:bean> -->
+    <beans:bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+          <beans:property name="maxUploadSize" value="20971520"/>   <!-- 20MB -->
+           <beans:property name="maxInMemorySize" value="1048576" />  <!-- 1MB -->
+    </beans:bean>
+    
+    
 
 <!-- ResourceBundleViewResolver -->
 <beans:bean class = "org.springframework.web.servlet.view.ResourceBundleViewResolver">
       <beans:property name = "basename" value = "views" />
       <beans:property name = "order" value = "1" />
    </beans:bean>
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
-		in the /WEB-INF/views directory -->
-	<!-- <beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
-	</beans:bean> -->
-
-	 <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	
+ <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<beans:property name="url"
@@ -82,9 +88,14 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.HRMS.Model.EmployeeVO</beans:value>
+				<beans:value>com.HRMS.Model.EmployeeVOImage</beans:value>
 				<beans:value>com.HRMS.Model.DepartmentVO</beans:value>
 				<beans:value>com.HRMS.Model.EmployeeVO_Login</beans:value>
 				<beans:value>com.HRMS.Model.Leaves</beans:value>
+				<beans:value>com.HRMS.Model.Employee_Leaves</beans:value>
+				<beans:value>com.HRMS.Model.Projects</beans:value>
+				<beans:value>com.HRMS.Model.Employee_Projects</beans:value>
+			
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

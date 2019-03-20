@@ -19,7 +19,7 @@
 
 <div class="col-sm-8 text-left"> 
 <c:url var="addAction" value="/Admin/saveEmployee" ></c:url>
-<form:form action="${addAction}"  modelAttribute="employeeVO">
+<form:form action="${addAction}"  method="post" enctype="multipart/form-data" modelAttribute="employeeVO">
 <div id="addEmployeeDiv">
 <table align="center" >
 <th align ="center" style="color:#0E4679">Employee Details</th>
@@ -82,7 +82,9 @@
 <td>Role</td><td><form:input path="employeeLogin.role" cssClass="focus1"/></td>
 <td><form:errors path="employeeLogin.role" cssClass="error"/></td>
 </tr>
-
+<tr><td>Upload Image</td>
+ <td><input type="file" name="image" id="image"/></td>
+</tr>
 <tr>
 <td><input type="submit"/></td>
 

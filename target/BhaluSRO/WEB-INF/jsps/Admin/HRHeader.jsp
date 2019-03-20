@@ -8,20 +8,33 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+  
 <spring:url value="/resources/BootStrap.css" var="bootStrap" />
 <link href="${bootStrap}" rel="stylesheet" />
+
 </head>
 <body>
  <ul class="nav navbar-nav">
-   <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+    
+         <li>
+         <spring:url value="/Admin/HRHome" var="HRHome" htmlEscape="true" />
+         <a href="${HRHome}">Home</a>
+         </li>
+         <li>
+         <spring:url value="/Setup/Setup" var="Setup" htmlEscape="true" />
+         <a href="${Setup}">Setup</a>
+         </li>
+        <li>
+        <spring:url value="/Admin/Projects" var="Projects" htmlEscape="true" />
+        <a href="${Projects}">Projects</a>
+        </li>
+      
         </ul>
       <ul class="nav navbar-nav navbar-right">
-     
-  <li><a href="${pageContext.request.contextPath}/LogOut"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+<c:if test="${!empty userImage}">
+ <li><img width="100" height="100" src="data:image/jpeg;base64,${userImage}"/></li>
+ </c:if> <li><spring:url value="/LogOut" var="LogOut" htmlEscape="true" />
+<a href="${LogOut}">LogOut</a></li>
    </ul>
 </body>
 </html>

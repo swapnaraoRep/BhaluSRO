@@ -17,4 +17,5 @@ public interface EmployeeDao {
 	public void addLeaves(Leaves l);
 	public void sendLeaveRequest(Employee_Leaves employeeLeave);
 	public List<Leaves> getAllLeaves();
+	public void updateEmployeeProfilePic(EmployeeVO_Login employeeLogin);
 }

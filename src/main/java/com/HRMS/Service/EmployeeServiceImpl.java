@@ -51,6 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public void updateEmployeePassword(EmployeeVO_Login employeeLogin) {
 		employeeDao.updateEmployeePassword(employeeLogin);
 	}
+	
 	@Transactional
 	public void addLeaves(Leaves l) {
 		employeeDao.addLeaves(l);		
@@ -66,6 +67,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public List<Leaves> getAllLeaves() {
 		// TODO Auto-generated method stub
 		return employeeDao.getAllLeaves();
+	}
+
+
+	@Transactional
+	public void updateEmployeeProfilePic(EmployeeVO_Login employeeLogin) {
+		employeeDao.updateEmployeeProfilePic(employeeLogin);
+		
 	}
 
 	

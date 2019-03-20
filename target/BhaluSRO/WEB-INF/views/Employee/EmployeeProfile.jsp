@@ -44,7 +44,7 @@
 				<td width="120">${login.firstName}</td>
 				<td width="120">${login.lastName}</td>
 				<td width="120">${login.employeeLogin.userName}</td>
-				<td width="120">${login.phone}</td>
+				<td width="120"><a href="<c:url value='/editEmployee/${login.id}' />" >${login.phone}</a></td>
 				<td width="120">${login.dateOfBirth}</td>
 				<td width="120">${login.hire_date}</td>
 				<td width="120">${login.job_id}</td>

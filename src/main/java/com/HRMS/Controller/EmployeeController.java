@@ -1,11 +1,13 @@
 package com.HRMS.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.HRMS.Model.DepartmentVO;
@@ -35,34 +38,40 @@ public class EmployeeController {
 	@Qualifier("employeeService")
 	EmployeeService employeeService;
 	
-	@Value("${valid.uname}")
-	private String sampleName;
+	
 	 	
 	 	@RequestMapping("/viewProfile/{id}")
 		  public String getEmployeeById(@PathVariable("id") int id,@ModelAttribute("user") EmployeeVO employeeVO, Model model){
 	 	
 	  	        return "viewEmployeeProfile";
 	    }
-	 	@RequestMapping("/LoadchangePassword/{id}")
+	 	/*@RequestMapping("/LoadchangePassword/{id}")
 		public String changePassword(@PathVariable("id") int id,@ModelAttribute("user") EmployeeVO employeeVO,Model model) {
 	 		System.out.println("employeeVO...."+employeeVO.getId());
 			model.addAttribute("user", new EmployeeVO());
 			return "changePasswordPage";
-		}
+		}*/
 	 	@RequestMapping("/viewProfile")
 		  public String getEmployeeProfile(){
 	  	        return "viewEmployeeProfile";
 	    }
-	 	@RequestMapping("/LoadChangePassword")
-		public ModelAndView loadChangePassword() {
+	 	@RequestMapping(value={"/LoadChangePassword","/changeProfilePic"})
+		public ModelAndView loadChangePassword(HttpServletRequest request) {
 	 		ModelAndView modelAndView = new ModelAndView();
 	 		modelAndView.addObject("employeeLogin", new EmployeeVO_Login());
+	 		
+	 		String requestUrl=request.getServletPath();
+	 		
+	 		if(requestUrl.equals("/LoadChangePassword"))
 	 		modelAndView.setViewName("changePasswordPage");
+	 		else
+	 			modelAndView.setViewName("changeProfilePic");
 			return modelAndView;
 		}
 	 	@RequestMapping("/UpdatePassword/{id}")
 		public ModelAndView updatePassword(@Valid @ModelAttribute("employeeLogin") EmployeeVO_Login employeeLogin,BindingResult result,
 				@PathVariable("id") int id) {
+	 		
 	 		
 	 		ModelAndView modelAndView = new ModelAndView();
 	 		if (result.hasErrors()) {
@@ -74,7 +83,7 @@ public class EmployeeController {
 	 			
 	 				if(employeeLogin.getPassword().equalsIgnoreCase(employeeLogin.getConfirmPassword()))
 	 				{
-	 					System.out.println("password and confirm are equal"+employeeLogin.getConfirmPassword()+""+employeeLogin.getPassword());
+	 					System.out.println("password and confirm are equal"+employeeLogin.getConfirmPassword()+""+employeeLogin.getId());
 	 					employeeService.updateEmployeePassword(employeeLogin);
 	 					modelAndView.addObject("PasswordFlag", employeeLogin.getUserName()+"Password Updated"+" Successfully");
 	 					modelAndView.setViewName("changePasswordPage");
@@ -90,6 +99,18 @@ public class EmployeeController {
 	 	
 			return modelAndView;
 		}
+	 	@RequestMapping("/UpdateProfilePic/{id}")
+		public ModelAndView UpdateProfilePic(@Valid @ModelAttribute("employeeLogin") EmployeeVO_Login employeeLogin,BindingResult result,
+				@PathVariable("id") int id,@RequestParam("image") MultipartFile photo) throws IOException {
+	 		
+	 		
+	 		ModelAndView modelAndView = new ModelAndView();
+	 		employeeLogin.setPhoto(photo.getBytes());
+	 		employeeService.updateEmployeeProfilePic(employeeLogin);//for update of any column
+	 		modelAndView.addObject("successFlag", employeeLogin.getUserName()+"Profile Pic  Updated"+" Successfully");
+	 		modelAndView.setViewName("changeProfilePic");
+	 		return modelAndView;
+	 	}
 	 	@RequestMapping("/LeaveRequest")
 		public String LeaveRequest(Model model) {
 			model.addAttribute("employeeLeave", new Employee_Leaves());

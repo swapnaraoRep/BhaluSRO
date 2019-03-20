@@ -58,7 +58,11 @@ public class AdminController {
 		return modelAndView;
 
 	}
-
+	@RequestMapping("/HRHome")
+	public String loadHRHomePage() {
+		
+		return "HRHomePage";
+	}
 	@RequestMapping("/RegisterEmployee")
 	public String loadEmployeeRegisterPage(Model model) {
 		List<DepartmentVO> dep = this.adminService.listDepartments();
@@ -79,9 +83,10 @@ public class AdminController {
 			employeeVO.setEmployeeLogin(employeeVO.getEmployeeLogin());
 			employeeVO.getEmployeeLogin().setEmployeeVO(employeeVO);
 			System.out.println(photo.getContentType() + photo.getName() + "***********IMAGEEEEEEE" + "OBJECT"
-					+ employeeVO.toString());
-
-			employeeVO.setPhoto(photo.getBytes());
+					+ employeeVO.toString()+"^^^^^^^"+photo);
+			System.out.println("isEmpty"+photo.isEmpty());
+			//if(photo.getBytes()==null)
+			employeeVO.getEmployeeLogin().setPhoto(photo.getBytes());
 			this.adminService.addEmployee(employeeVO);
 		}
 		return "redirect:/Admin/getEmployeesData";
@@ -118,11 +123,12 @@ public class AdminController {
 		response.setContentType("image/jpeg");
 		
 		EmployeeVO emp = this.adminService.getEmployeeById(id);
-		
-	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-	    response.getOutputStream().write(emp.getPhoto());
-	    response.getOutputStream().close();
-		
+		 
+			 response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+
+		    response.getOutputStream().write(emp.getEmployeeLogin().getPhoto());
+		   
+		    response.getOutputStream().close();
 	}
 
 	@RequestMapping(value = "/leaveHistoryRequest")

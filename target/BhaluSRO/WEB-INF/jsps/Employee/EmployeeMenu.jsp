@@ -16,17 +16,29 @@
 <link href="${bootStrap}" rel="stylesheet" />
 </head>
 <body>
- <ul class="nav nav-pills nav-stacked">
+
+<%--  <ul class="nav nav-pills nav-stacked">
      <li><spring:url value="/viewProfile/${user.id}" var="viewProfile" htmlEscape="true" />
-<a href="${viewProfile}">View Profile</a></li>
+<a href="${viewProfile}" class="btn btn-primary">View Profile</a></li>
  <li><spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
+<a href="${changePassword}" class="btn btn-primary">Change Password</a></li>
+<li><spring:url value="/changePassword/${user.id}" var="changePassword" htmlEscape="true" />
 <a href="${changePassword}">Change Password</a></li>
-<%-- <li><spring:url value="/changePassword/${user.id}" var="changePassword" htmlEscape="true" />
-<a href="${changePassword}">Change Password</a></li> --%>
  
  <li><spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
-<a href="${leaveRequest}">Leave Request</a></li>
+<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a></li>
      
-</ul>
+</ul> --%>
+<div class="btn-group-vertical">
+<spring:url value="/viewProfile/${user.id}" var="viewProfile" htmlEscape="true" />
+<a href="${viewProfile}" class="btn btn-primary">View Profile</a>
+   <spring:url value="/LoadChangePassword" var="changePassword" htmlEscape="true" />
+<a href="${changePassword}" class="btn btn-primary">Change Password</a>
+<spring:url value="/LeaveRequest" var="leaveRequest" htmlEscape="true" />
+	<a href="${leaveRequest}" class="btn btn-primary">Leave Request</a>
+	<!-- <img src="/BhaluSRO/src/main/webapp/WEB-INF/CSS/images/editIcon.png"> -->
+ <spring:url value="/images" var="images" />
+    <img src="${images}/editIcon.png"/>
+  <%-- <img src="${pageContext.request.contextPath}/images/editIcon.png" /> --%>
 </body>
 </html>

@@ -17,5 +17,7 @@ public interface EmployeeService {
 	public void addLeaves(Leaves l);
 	public List<Leaves> getAllLeaves();
 	public void sendLeaveRequest(Employee_Leaves employeeLeave);
+
+	public void updateEmployeeProfilePic(EmployeeVO_Login employeeLogin);
 	
 }

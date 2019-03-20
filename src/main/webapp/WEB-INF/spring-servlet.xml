@@ -37,6 +37,7 @@
 </beans:bean>
 	<resources mapping="/resources/**" location="/WEB-INF/CSS/theme1/" /> 
 	<resources mapping="/js/**" location="/WEB-INF/JS/" /> 
+	<resources mapping="/images/**" location="/WEB-INF/CSS/images/" /> 
 	
 <!-- 	<context:property-placeholder location="classpath:messages.properties"/>
  -->	<!-- For tiles -->

@@ -48,7 +48,7 @@ function validatePassWord(enterPass,oldPass)
 </tr> 
 <tr>
 <td><input type="submit" value="changePassword"/></td>
-<td align="right"> <a href="Login">Login Again?</a></td>
+<td align="right"> <a href="${pageContext.request.contextPath}/Login">Login Again?</a></td>
 </tr>
 <tr>
 

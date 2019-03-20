@@ -71,6 +71,12 @@
 	<put-attribute name="body"
 			value="/WEB-INF/views/Employee/ChangePassword.jsp" />
 </definition>
+<definition name="changeProfilePic" extends="DefaultTemplate">
+<put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />
+	<put-attribute name="body"
+			value="/WEB-INF/views/Employee/ChangeProfilePic.jsp" />
+</definition>
 <definition name="leaveRequest" extends="DefaultTemplate">
 <put-attribute name="menu" value="/WEB-INF/jsps/Employee/EmployeeMenu.jsp" />
 		<put-attribute name="header" value="/WEB-INF/jsps/Employee/EmployeeHeader.jsp" />

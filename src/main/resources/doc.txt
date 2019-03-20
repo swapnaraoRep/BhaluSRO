@@ -27,3 +27,8 @@ https://stackoverflow.com/questions/39404757/hibernate-fetch-data-from-two-table
 
 /get two tablesdata from hibernate
 url:https://www.journaldev.com/3422/hibernate-native-sql-query-example
+
+Problems:
+
+//Hibernate will update all the unmodified columns.
+If set the dynamic-insert to true, which means exclude unmodified properties in the Hibernate’s SQL update statement
